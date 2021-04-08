@@ -1,23 +1,41 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import dictionary from './dictionary.json'
 
 function App() {
+  const [termin, setTermin] = useState('Здесь будет термин')
+  const [value, setValue] = useState('')
+
+  const getTermin = (event) => {
+    event.preventDefault()
+
+    try {
+      const description = dictionary[value]
+      console.log(description)
+
+      if (typeof description !== 'undefined') {
+        setTermin(description)
+      } else {
+        setTermin('Такого термина нет')
+      }
+    } catch(e) {
+      console.log(e)
+    }
+
+    setValue('')
+  }
+
+  const valueHandler = (event) => setValue(event.target.value)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Мой словарь</h1>
+      <form onSubmit={getTermin}>
+        <label id="terminLable">Тремин:</label>
+        <input type="text" name="name" value={value} onChange={valueHandler} />
+        <input className="getButton" type="submit" value="Получить " />
+      </form>
+      <h3>{termin}</h3>
     </div>
   );
 }
