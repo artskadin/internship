@@ -3,7 +3,7 @@ import './App.css';
 import dictionary from './dictionary.json'
 
 function App() {
-  const [termin, setTermin] = useState('Здесь будет термин')
+  const [termin, setTermin] = useState('Здесь будет отображаться термин')
   const [value, setValue] = useState('')
 
   const getTermin = (event) => {
@@ -28,14 +28,16 @@ function App() {
 
   return (
     <div className="App">
-      <h1 id="my-header">Введите ваш термин</h1>
+      <h1 id="my-header">Напишите термин</h1>
       <form onSubmit={getTermin}>
         <label id="terminLable">Тремин:</label>
         <input type="text" name="name" value={value} onChange={valueHandler} />
         <br/>
+        <br/>
         <input className="getButton" type="submit" value="Получить " />
       </form>
-      <h3>{termin}</h3>
+      <h3>Определение</h3>
+      <p>{termin}</p>
     </div>
   );
 }
