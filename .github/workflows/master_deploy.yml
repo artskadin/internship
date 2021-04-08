@@ -27,4 +27,4 @@ jobs:
         run: npm run deploy
 
       - name: Updating Domain
-        run: echo "Обновить домен"
+        run: echo "Обновить мой домен"
