@@ -21,7 +21,6 @@ function App() {
     } catch(e) {
       console.log(e)
     }
-
     setValue('')
   }
 
@@ -29,10 +28,11 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Мой словарь</h1>
+      <h1 id="my-header">Введите ваш термин</h1>
       <form onSubmit={getTermin}>
         <label id="terminLable">Тремин:</label>
         <input type="text" name="name" value={value} onChange={valueHandler} />
+        <br/>
         <input className="getButton" type="submit" value="Получить " />
       </form>
       <h3>{termin}</h3>
